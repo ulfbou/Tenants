@@ -1,0 +1,15 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/src/Tenants.Application/obj
+/src/Tenants.Blazor/Tenants.Blazor.Client/obj/Debug/net9.0
+/src/Tenants.Blazor/Tenants.Blazor.Server/obj/Debug
+/src/Tenants.BlazorClient/obj
+/src/Tenants.BlazorServer/obj
+/src/Tenants.Domain/bin/Debug/net9.0
+/src/Tenants.Domain/obj
+/src/Tenants.Infrastructure/bin/Debug/net9.0
+/src/Tenants.Infrastructure/obj
+*.txt

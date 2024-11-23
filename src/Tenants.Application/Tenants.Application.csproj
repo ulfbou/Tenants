@@ -22,6 +22,7 @@
 
 	<ItemGroup>
 		<Folder Include="Interfaces\CQRS\" />
+		<Folder Include="Services\" />
 	</ItemGroup>
 
 </Project>

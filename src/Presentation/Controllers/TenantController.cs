@@ -40,7 +40,6 @@ namespace Tenants.Presentation.Controllers
             if (tenant == Guid.Empty)
             {
                 _logger.LogWarning($"Failed to create tenant {request.Name}{request.ParentTenantId?.ToString() ?? string.Empty}.");
-                // Return 500 Internal Server Error
                 return StatusCode(500);
             }
 

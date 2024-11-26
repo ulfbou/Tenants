@@ -38,7 +38,7 @@ namespace Tenants.Infrastructure.Repositories
         {
             try
             {
-                _context.Tenants.Add(tenant);
+                await _context.Tenants.AddAsync(tenant);
                 await _context.SaveChangesAsync(cancellationToken);
                 return tenant;
             }

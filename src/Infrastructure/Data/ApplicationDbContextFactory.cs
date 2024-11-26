@@ -1,12 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
+using System;
+using System.IO;
 
 using Tenants.Infrastructure.Tenants;
 
 namespace Tenants.Infrastructure.Data
 {
-    public class ApplicationDbContextFactory : IDbContextFactory<ApplicationDbContext>, IDesignTimeDbContextFactory<ApplicationDbContext>
+    public class ApplicationDbContextFactory : IDbContextFactory<ApplicationDbContext>
     {
         private readonly IServiceProvider _serviceProvider;
 
@@ -20,11 +24,6 @@ namespace Tenants.Infrastructure.Data
             var options = _serviceProvider.GetRequiredService<DbContextOptions<ApplicationDbContext>>();
             var tenantProvider = _serviceProvider.GetRequiredService<ITenantProvider>();
             return new ApplicationDbContext(options, tenantProvider);
-        }
-
-        public ApplicationDbContext CreateDbContext(string[] args)
-        {
-            return CreateDbContext();
         }
     }
 }

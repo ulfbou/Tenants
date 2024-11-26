@@ -17,7 +17,9 @@ namespace Tenants.Infrastructure.Extensions
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             services.AddSingleton<IDbContextFactory<ApplicationDbContext>, ApplicationDbContextFactory>();
+            services.AddScoped<IDbContextFactory<ApplicationDbContext>, ApplicationDbContextFactory>();
             services.AddScoped<ITenantRepository, TenantRepository>();
+            services.AddScoped<ITenantUserRepository, TenantUserRepository>();
             services.AddScoped<ITenantProvider, TenantProvider>();
 
             return services;

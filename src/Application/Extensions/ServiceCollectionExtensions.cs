@@ -17,6 +17,7 @@ namespace Tenants.Application.Extensions
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CreateTenantCommandHandler).Assembly));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
             services.AddScoped<ITenantService, TenantService>();
+            services.AddScoped<ITenantUserService, TenantUserService>();
             return services;
         }
 

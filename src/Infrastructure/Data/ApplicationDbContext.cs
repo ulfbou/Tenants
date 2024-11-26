@@ -8,12 +8,12 @@ namespace Tenants.Infrastructure.Data
 {
     public class ApplicationDbContext : DbContext
     {
-        private readonly ITenantProvider _tenantProvider;
+        private readonly ITenantProvider? _tenantProvider;
 
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, ITenantProvider tenantProvider)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, ITenantProvider? tenantProvider = null)
             : base(options)
         {
-            _tenantProvider = tenantProvider;
+            _tenantProvider = tenantProvider!;
         }
 
         public DbSet<Tenant> Tenants => Set<Tenant>();
@@ -23,8 +23,10 @@ namespace Tenants.Infrastructure.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Global Query Filter for Tenant Isolation
-            modelBuilder.Entity<TenantUser>().HasQueryFilter(t => _tenantProvider.TenantId == null || t.TenantId == _tenantProvider.TenantId);
+            if (_tenantProvider?.TenantId is not null)
+            {
+                modelBuilder.Entity<TenantUser>().HasQueryFilter(t => _tenantProvider.TenantId == null || t.TenantId == _tenantProvider.TenantId);
+            }
         }
     }
 }

@@ -5,7 +5,7 @@ using Tenants.Application.Commands;
 using Tenants.Application.DTOs;
 using Tenants.Application.Queries;
 
-namespace Tenants.API.Controllers
+namespace Tenants.Microservice.Controllers
 {
     [Route("api/auth")]
     [ApiController]
